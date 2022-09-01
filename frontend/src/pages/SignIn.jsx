@@ -1,3 +1,5 @@
+
+import React from "react"
 import {
     Flex,
     Box,
@@ -23,7 +25,7 @@ import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(signinUser({mobile,password}))
-        .then((res.type==SIGNIN_SUCCESS ? alert("Logged in successfully") : alert("error")))
+        .then((res)=>res.type==SIGNIN_SUCCESS ? alert("Logged in successfully") : alert("error"))
         
     }
     return (
@@ -34,7 +36,7 @@ import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
         bg={useColorModeValue('gray.50', 'gray.800')}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign in to your Chat App account</Heading>
+            <Heading fontSize={'4xl'}>Sign in to your Chat App</Heading>
           </Stack>
           <Box
             rounded={'lg'}
@@ -43,14 +45,14 @@ import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
             p={8}>
            <form action="" onSubmit={handleSubmit}>
            <Stack spacing={4}>
-              <FormControl id="mobile">
+              <FormControl id="mobile" isRequired>
                 <FormLabel>Mobile number</FormLabel>
                 <Input 
                   type="tel"
                   onChange={(e)=>setMobile(e.target.value)}
                   />
               </FormControl>
-              <FormControl id="password">
+              <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <Input type="password" 
                 onChange={(e)=>setPassword(e.target.value)}/>
