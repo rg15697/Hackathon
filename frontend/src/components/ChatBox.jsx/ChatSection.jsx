@@ -12,7 +12,7 @@ const ChatSection = () => {
     
   return (
     <Box style={w ? {width:"40%"} : {width:"70%"}}>
-        <Flex  justifyContent="space-between" width={"100%"} border={"solid red 2px"} p={2} >
+        <Flex  justifyContent="space-between" width={"100%"}  p={2} >
             <Flex style={{cursor:"pointer"}} px={4}>
             <StaticProfileBar 
                 position='right' 
@@ -27,7 +27,7 @@ const ChatSection = () => {
             <NavLink to="/signup" ><Button>Sign Up</Button></NavLink>
             </HStack>
         </Flex>
-        <Box height="80vh" border={"solid red 2px"}  overflow="scroll">
+        <Box height="80vh" border={"solid grey 1px"}  overflow="scroll">
 
         </Box>
         <Box>

@@ -20,9 +20,9 @@ const ContactBar = () => {
 
     }
 
-  return <Box w="30%" height={"100vh"} >
+  return <Box w="30%" height={"100vh"} borderRight="2px solid black">
         {/* =================TOPBAr===================== */}
-        <Flex justifyContent="space-between" width={"100%"}  p={2} >
+        <Flex justifyContent="space-between" width={"100%"}  p={2}  >
             <Box style={{cursor:"pointer"}}>
             <ProfileInfoBar position='left' profileData = {{name:"Aaro"}} /> 
                {/* <Avatar 
@@ -88,7 +88,7 @@ const ContactBar = () => {
 
        <Flex justifyContent={"center"} gap={2} position="fixed"  bottom={5} left={5}>
            <LockIcon />
-           <Text fontSize={14}>Your personal messages are <span style={{color:"#179cd2"}}>end-to-end encrypted</span></Text>
+           <Text fontSize={14}>Your personal messages are <span style={{color:"#179cd2",cursor:"pointer"}}>end-to-end encrypted</span></Text>
            <Text fontSize={14}> </Text>
        </Flex>
 

@@ -44,7 +44,7 @@ export function StaticProfileBar({position,profileData}) {
             {/* ====================Top Back section============ */}
 
             <Flex borderBottomWidth='1px' p={4}>
-                <DrawerHeader border="solid red 2px"  style={{width:"minContent"}} height="50px" marginTop={-5} fontSize={20}>  Contact Info </DrawerHeader>
+                <Text fontWeight={500}>Contact Info</Text>
                 <DrawerCloseButton  cursor="pointer" />
             </Flex>
 
@@ -69,7 +69,7 @@ export function StaticProfileBar({position,profileData}) {
 
                     <VStack textAlign={'left'} border="solid red 2px">
                         <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >About :</Heading>
-                        <Text  width='400px' px={3}>Having fun</Text>
+                        <Text  width='400px' px={3}>Having fun........</Text>
                     </VStack>
 
 
