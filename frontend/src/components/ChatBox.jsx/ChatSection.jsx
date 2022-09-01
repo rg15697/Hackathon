@@ -33,7 +33,7 @@ const ChatSection = () => {
         <Box>
             <Flex gap={15} p={5}>
                 <Input type="text" placeholder="Enter your message .........." />
-                <Button backgroundColor="#179cd2" width={150} >
+                <Button backgroundColor="#179cd2" width={150}   _hover={{background: "teal.500",color: "black",}} >
                     <ImRocket fontSize={25} />
                 </Button>
             </Flex>
