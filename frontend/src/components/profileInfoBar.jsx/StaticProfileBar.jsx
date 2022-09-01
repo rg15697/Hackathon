@@ -52,7 +52,7 @@ export function StaticProfileBar({position,profileData}) {
                 <VStack>
                     {/* ========================Profile image==================== */}
 
-                    <Flex justifyContent="center" width="100%"  border="solid red 2px">
+                    <Flex justifyContent="center" width="100%"  border="solid grey 1px">
                     <Image
                        borderRadius='full'
                        height="200px"
@@ -62,12 +62,17 @@ export function StaticProfileBar({position,profileData}) {
                     />
                     </Flex>
 
-                    <VStack textAlign={'center'} borderBottomWidth='1px' p={3}>
-                        <Text  width='400px' fontWeight={600}   px={3}>Aaro gupta</Text>
-                        <Text > +91 9532334248</Text>
+                    <VStack textAlign={'left'} border="solid grey 2px">
+                        <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >User Name :</Heading>
+                        <Text  width='400px' px={3}> Aaro Gupta</Text>
+                    </VStack>
+                    
+                    <VStack textAlign={'left'} border="solid grey 2px">
+                        <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >Mobile Nmber :</Heading>
+                        <Text  width='400px' px={3}> +91 9532334248</Text>
                     </VStack>
 
-                    <VStack textAlign={'left'} border="solid red 2px">
+                    <VStack textAlign={'left'} border="solid grey 2px">
                         <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >About :</Heading>
                         <Text  width='400px' px={3}>Having fun........</Text>
                     </VStack>
