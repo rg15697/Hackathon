@@ -1,3 +1,5 @@
+
+import React from "react"
 import {
     Flex,
     Box,
@@ -23,7 +25,7 @@ import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(signinUser({mobile,password}))
-        .then((res.type==SIGNIN_SUCCESS ? alert("Logged in successfully") : alert("error")))
+        .then((res)=>res.type==SIGNIN_SUCCESS ? alert("Logged in successfully") : alert("error"))
         
     }
     return (
