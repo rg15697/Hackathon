@@ -1,8 +1,9 @@
-import { Box,Button,Flex,HStack, Input } from '@chakra-ui/react'
+import { Box,Button,Flex,HStack, Text,Input } from '@chakra-ui/react'
 import React from 'react'
 import { ProfileInfoBar } from '../profileInfoBar.jsx/ProfileInfo'
 import { StaticProfileBar } from '../profileInfoBar.jsx/StaticProfileBar'
 import { ImRocket } from "react-icons/im";
+import {NavLink} from "react-router-dom"
 
 const ChatSection = () => {
     const [w,setW] = React.useState(false)
@@ -11,22 +12,22 @@ const ChatSection = () => {
     
   return (
     <Box style={w ? {width:"40%"} : {width:"70%"}}>
-        <Flex  justifyContent="space-between" width={"100%"} border={"solid red 2px"} p={2} >
-            <Box style={{cursor:"pointer"}} px={4}>
+        <Flex  justifyContent="space-between" width={"100%"}  p={2} >
+            <Flex style={{cursor:"pointer"}} px={4}>
             <StaticProfileBar 
                 position='right' 
                 profileData = {{name:"Aaro"}} 
                 onClick={()=>setW(!w)}
             /> 
-
-            </Box>
+            <Text px={4} marginTop={1} fontWeight={500}>Username</Text>
+            </Flex>
+            
             <HStack spacing='24px' >
-                {/* <i style={{fontSize:"25px",cursor:"pointer"}} className="fa-solid fa-circle-notch"></i>
-                <i style={{fontSize:"25px",cursor:"pointer"}} className="fa-solid fa-plus"></i>
-                <i style={{fontSize:"25px",cursor:"pointer"}} className="fa-solid fa-ellipsis"></i> */}
+            <NavLink to="/signin" ><Button>Sign In</Button></NavLink>
+            <NavLink to="/signup" ><Button>Sign Up</Button></NavLink>
             </HStack>
         </Flex>
-        <Box height="80vh" border={"solid red 2px"} >
+        <Box height="80vh" border={"solid grey 1px"}  overflow="scroll">
 
         </Box>
         <Box>
