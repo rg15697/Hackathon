@@ -52,7 +52,7 @@ export function ProfileInfoBar({position,profileData}) {
                 <VStack>
                     {/* ========================Profile image==================== */}
 
-                    <Flex justifyContent="center" width="100%"  border="solid red 2px">
+                    <Flex justifyContent="center" width="100%"  border="solid grey 2px">
                     <Image
                        borderRadius='full'
                        height="200px"
@@ -62,7 +62,7 @@ export function ProfileInfoBar({position,profileData}) {
                     />
                     </Flex>
 
-                    <VStack textAlign={'left'} border="solid red 2px">
+                    <VStack textAlign={'left'} border="solid grey 2px">
                         <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >Your Name :</Heading>
                         <Editable width={"100%"} defaultValue={"Rohit kumar Gupta"} px={2}>
                               <EditablePreview width={"100%"} />
@@ -75,7 +75,17 @@ export function ProfileInfoBar({position,profileData}) {
                         </Editable>
                     </VStack>
 
-                    <VStack textAlign={'left'} border="solid red 2px">
+                    <VStack textAlign={'left'} border="solid grey 2px">
+                        <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >Mobile Nmber :</Heading>
+                        <Text  width='400px' px={3}> +91 9532334248</Text>
+                    </VStack>
+
+                    <VStack textAlign={'left'} border="solid grey 2px">
+                        <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >Email :</Heading>
+                        <Text  width='400px' px={3}>rg15697@gmail.com</Text>
+                    </VStack>
+
+                    <VStack textAlign={'left'} border="solid grey 2px">
                         <Heading width='400px' p={3} marginLeft={0} fontSize={20} fontWeight={400} color="teal"  >About :</Heading>
                         <Editable width={"100%"} defaultValue={about} px={2}>
                               <EditablePreview width={"100%"} />
