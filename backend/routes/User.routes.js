@@ -20,4 +20,8 @@ UserRouter.post("/verifyemail", (req, res) => {
   console.log("get");
 });
 
+UserRouter.get("/getUser", (req, res) => {
+  console.log("get");
+});
+
 module.exports = UserRouter;
