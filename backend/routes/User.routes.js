@@ -27,8 +27,8 @@ UserRouter.post("/signup", async (req, res) => {
 });
 
 UserRouter.post("/login", async (req, res) => {
-  const { name, mob_num } = req.body;
-  const validUser = await User.findOne({ name, mob_num });
+  const { mob_num, password } = req.body;
+  const validUser = await User.findOne({ mob_num, password });
   if (!validUser) {
     return res.status(401).send({ message: "Invalid Credentials" });
   }
@@ -37,6 +37,7 @@ UserRouter.post("/login", async (req, res) => {
       name: validUser.name,
       email: validUser.email,
       mob_num: validUser.mob_num,
+      password: validUser.password,
       about: validUser.about,
     },
     "Secret"
