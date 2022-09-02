@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import ChatBot from "../components/ChatBot/ChatBot";
 import HomePage from "../pages/HomePage";
 import Signin from "../pages/SignIn";
 import Signup from "../pages/Signup";

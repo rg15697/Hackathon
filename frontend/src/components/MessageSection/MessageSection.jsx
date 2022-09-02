@@ -8,6 +8,54 @@ import { NavLink } from "react-router-dom";
 const ChatSection = () => {
   const [w, setW] = React.useState(false);
 
+  <script src="/socket.io/socket.io.js"></script>;
+
+  const ws = io();
+
+  const form = document.getElementById("forms");
+  const input = document.getElementById("input");
+  const messagesDiv = document.getElementById("messages");
+
+  // TO SHOW "OTHER USER IS TYPING"
+  // IT REEPLACES THE OTHER MESSAGES HISTORY
+  // ONLY FOR UNDERSTANDING PURPOSE
+  // input.addEventListener("keyup", () => {
+  //   ws.emit("typing");
+  // });
+
+  // ws.on("typing", () => {
+  //   messagesDiv.innerText = "Other user is typing";
+  // });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const textMessage = input.value;
+    // my custom event
+    ws.emit("new message", textMessage);
+  });
+
+  ws.on("new message", function (msg) {
+    const span = document.createElement("div");
+    span.innerText = msg;
+    messagesDiv.appendChild(span);
+  });
+
+  ws.on("new user", () => {
+    const span = document.createElement("div");
+    span.innerText = "New user joined chat";
+    messagesDiv.appendChild(span);
+  });
+
+  ws.on("history", (hs) => {
+    if (hs?.length > 0) {
+      for (const h of hs) {
+        const span = document.createElement("div");
+        span.innerText = h;
+        messagesDiv.appendChild(span);
+      }
+    }
+  });
+
   return (
     <Box style={w ? { width: "40%" } : { width: "70%" }}>
       <Flex justifyContent="space-between" width={"100%"} p={2}>
@@ -31,13 +79,24 @@ const ChatSection = () => {
           </NavLink>
         </HStack>
       </Flex>
-      <Box height="80vh" border={"solid grey 1px"} overflow="scroll"></Box>
+      <Box
+        height="80vh"
+        border={"solid grey 1px"}
+        overflow="scroll"
+        id="messages"
+      ></Box>
       <Box>
         <Flex gap={15} p={5}>
-          <Input type="text" placeholder="Enter your message .........." />
-          <Button backgroundColor="#179cd2" width={150}>
+          {/* <Form id="forms"> */}
+          <Input
+            type="text"
+            placeholder="Enter your message .........."
+            id="input"
+          />
+          <Button backgroundColor="#179cd2" width={150} type="submit">
             <ImRocket fontSize={25} />
           </Button>
+          {/* </Form> */}
         </Flex>
       </Box>
     </Box>
