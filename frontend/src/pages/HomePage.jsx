@@ -4,13 +4,13 @@ import { ColorModeSwitcher } from "@chakra-ui/theme";
 import { Flex } from "@chakra-ui/react";
 import ContactBar from "../components/Contactbar/ContactBar";
 import { ProfileInfoBar } from "../components/profileInfoBar.jsx/ProfileInfo";
-import ChatSection from "../components/ChatBox.jsx/ChatSection";
+import MessageSection from "../components/MessageSection/MessageSection";
 
 const HomePage = () => {
   return (
     <Flex>
       <ContactBar />
-      <ChatSection />
+      <MessageSection />
     </Flex>
   );
 };
