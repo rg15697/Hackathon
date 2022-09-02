@@ -6,6 +6,7 @@ const UserSchema = new Schema({
   mob_num: { type: Number, required: true },
   password: { type: String, required: true },
   about: { type: String, required: true },
+  message: { type: String },
 });
 
 const UserModel = model("user", UserSchema);
