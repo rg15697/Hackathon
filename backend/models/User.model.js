@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   email: { type: String, required: true },
   mob_num: { type: Number, required: true },
   //password: { type: String, required: true },
-  about: { type: String, required: true },
+  about: { type: String },
 });
 
 const UserModel = model("user", UserSchema);
