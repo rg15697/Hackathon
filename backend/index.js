@@ -16,27 +16,14 @@ const wss = new Server(webServer);
 const history = [];
 
 wss.on("connection", (ws) => {
-  // every single socket except current socket
   ws.broadcast.emit("new user", history);
   ws.emit("history", history);
 });
 
-// CODE TO SHOW "OTHER USER IS TYPING"
-// IT REEPLACES THE OTHER MESSAGES HISTORY
-// ONLY FOR UNDERSTANDING PURPOSE
-// wss.on("connection", (ws) => {
-//   ws.on("typing", () => {
-//     ws.broadcast.emit("typing");
-//   });
-// });
-
 wss.on("connection", (ws) => {
   ws.on("new message", (m) => {
     history.push(m);
-    // use ws to get the message on all the users except the sender user
-    // ws.broadcast.emit("new message", m);
 
-    // use wss to get the message on all the users including itself
     wss.emit("new message", m);
   });
 });
@@ -44,7 +31,6 @@ wss.on("connection", (ws) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// sendFile is express operation, not OS- file/fs operation
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
@@ -52,8 +38,3 @@ app.get("/", (req, res) => {
 webServer.listen(8080, () => {
   console.log("Server started on port 8080");
 });
-
-// app.listen(process.env.PORT, async () => {
-//   await connection;
-//   console.log(`Server listening at PORT ${process.env.PORT}`);
-// });

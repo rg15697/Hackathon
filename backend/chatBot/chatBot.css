@@ -45,7 +45,7 @@ body{
   padding-left: 10px;
 }
 
-.chat-body{
+.messages{
   height: 300px;
   display: flex;
 }

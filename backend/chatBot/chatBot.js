@@ -1,10 +1,10 @@
 import React from "react";
 
 const ChatBot = () => {
-  const inputField = document.getElementById("input");
+  const inputField = document.getElementById("txtinput");
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
-      console.log(e)
+      console.log(e);
       let input = inputField.value;
       inputField.value = "";
       output(input);
@@ -55,6 +55,9 @@ const ChatBot = () => {
     return item;
   }
 
+  var SearchTerm = inputField.value;
+  var TextSearch = "group chat";
+
   function output(input) {
     let product;
     let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
@@ -66,6 +69,8 @@ const ChatBot = () => {
 
     if (compare(utterances, answers, text)) {
       product = compare(utterances, answers, text);
+    } else if (TextSearch.match(SearchTerm)) {
+      navigate("/messagesection");
     } else {
       product = alternatives[Math.floor(Math.random() * alternatives.length)];
     }
