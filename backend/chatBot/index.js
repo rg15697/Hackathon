@@ -1,13 +1,13 @@
 const express = require("express");
 const { Server } = require("socket.io");
-const userRoutes = require("./routes/User.routes");
-const connection = require("./config/db");
+// const userRoutes = require("../routes/User.routes");
+// const connection = require("../config/db");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
 
 const webServer = require("http").createServer(app);
 
@@ -28,11 +28,8 @@ wss.on("connection", (ws) => {
   });
 });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "index.html");
 });
 
 webServer.listen(8080, () => {
