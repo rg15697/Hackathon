@@ -20,21 +20,27 @@ import { useDispatch } from "react-redux";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { signupUser } from "../redux/auth/action";
 import { SIGNUP_SUCCESS } from "../redux/auth/actionType";
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = React.useState({});
   const dispatch = useDispatch();
+
   const handleChange = (e) => {
     let { name, value, checked, type, files } = e.target;
     if (type == "file") setForm({ ...form, [name]: files });
     else setForm({ ...form, [name]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signupUser(form)).then((res) =>
       res.type == SIGNUP_SUCCESS
-        ? alert("Account created successfully")
+        ? 
+        // alert("error")
+        navigate("/signin")
         : alert("error")
     );
   };
@@ -59,7 +65,7 @@ export default function Signup() {
           p={8}
         >
           <Stack spacing={4}>
-            <form onSubmit={handleSubmit}>
+            <form >
               <FormControl id="userName" isRequired>
                 <FormLabel>User Name</FormLabel>
                 <Input type="text" onChange={handleChange} name="userName" />
@@ -100,14 +106,16 @@ export default function Signup() {
                 <Input
                   type="submit"
                   loadingText="Submitting"
-                  value=" Sign Up"
                   size="lg"
+                  value="Sign up"
                   bg={"blue.400"}
                   color={"white"}
                   _hover={{
                     bg: "blue.500",
                   }}
+                  // onSubmit={handleSubmit}
                 />
+                  {/* Sign Up</Input> */}
               </Stack>
               <Stack pt={6}>
                 <Text align={"center"}>

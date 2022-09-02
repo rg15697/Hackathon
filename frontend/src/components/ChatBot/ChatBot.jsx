@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ChatBot = () => {
+  const navigate = useNavigate();
   const inputField = document.getElementById("input");
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
+      console.log(e);
       let input = inputField.value;
       inputField.value = "";
       output(input);
@@ -36,7 +39,6 @@ const ChatBot = () => {
   ];
 
   const alternatives = [
-    "Go on...",
     "Try again",
     "Sorry we couldn't find what you're looking for",
   ];
@@ -54,6 +56,9 @@ const ChatBot = () => {
     return item;
   }
 
+  var SearchTerm = inputField.value;
+  var TextSearch = "group chat";
+
   function output(input) {
     let product;
     let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
@@ -65,6 +70,8 @@ const ChatBot = () => {
 
     if (compare(utterances, answers, text)) {
       product = compare(utterances, answers, text);
+    } else if (TextSearch.match(SearchTerm)) {
+      navigate("/messagesection");
     } else {
       product = alternatives[Math.floor(Math.random() * alternatives.length)];
     }
