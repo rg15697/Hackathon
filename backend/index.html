@@ -1,0 +1,102 @@
+<!-- part-2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatter</title>
+    <style>
+      body {
+        width: 80vw;
+        height: 100vh;
+      }
+      #container {
+        width: 400px;
+      }
+      #forms {
+        display: flex;
+        gap: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+      }
+      #input {
+        width: 100%;
+      }
+      #messages {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      #messages div {
+        border: 1px solid rgb(6, 190, 6);
+        margin-top: 10px;
+        border-radius: 5px;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Chatter</h1>
+      <div id="messages"></div>
+      <form id="forms">
+        <input type="text" id="input" />
+        <button type="submit" id="send">Send</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      const ws = io();
+
+      const form = document.getElementById("forms");
+      const input = document.getElementById("input");
+      const messagesDiv = document.getElementById("messages");
+
+      // TO SHOW "OTHER USER IS TYPING"
+      // IT REEPLACES THE OTHER MESSAGES HISTORY
+      // ONLY FOR UNDERSTANDING PURPOSE
+      // input.addEventListener("keyup", () => {
+      //   ws.emit("typing");
+      // });
+
+      // ws.on("typing", () => {
+      //   messagesDiv.innerText = "Other user is typing";
+      // });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const textMessage = input.value;
+        // my custom event
+        ws.emit("new message", textMessage);
+      });
+
+      ws.on("new message", function (msg) {
+        const span = document.createElement("div");
+        span.innerText = msg;
+        messagesDiv.appendChild(span);
+      });
+
+      ws.on("new user", () => {
+        const span = document.createElement("div");
+        span.innerText = "New user joined chat";
+        messagesDiv.appendChild(span);
+      });
+
+      ws.on("history", (hs) => {
+        if (hs?.length > 0) {
+          for (const h of hs) {
+            const span = document.createElement("div");
+            span.innerText = h;
+            messagesDiv.appendChild(span);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
