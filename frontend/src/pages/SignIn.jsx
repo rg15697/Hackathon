@@ -16,17 +16,20 @@ import {
 import { useDispatch } from "react-redux";
 import { signinUser } from "../redux/auth/action";
 import { SIGNIN_SUCCESS } from "../redux/auth/actionType";
+import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
+  const navigate = useNavigate();
   const [mobile, setMobile] = React.useState("");
   const [password, setPassword] = React.useState("");
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signinUser({ mobile, password })).then((res) =>
-      res.type == SIGNIN_SUCCESS
-        ? alert("Logged in successfully")
-        : alert("error")
+      res.type == SIGNIN_SUCCESS 
+      ? alert("error")
+      // navigate("/chatbot") 
+      : alert("error")
     );
   };
   return (
